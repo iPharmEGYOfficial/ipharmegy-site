@@ -1,34 +1,91 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>iPharmEGY Portal</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="icon" href="assets/icon.svg"/>
-<link rel="stylesheet" href="css/style.css"/>
+
+<link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #f3f4f6;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: white;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-buttons a {
+  text-decoration: none;
+  background: #e5eaf4;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #1e3a8a;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.nav-buttons a:hover {
+  background: #1e40af;
+  color: white;
+}
+
+.logo {
+  height: 36px;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6b7280;
+  font-size: 18px;
+}
+</style>
 </head>
 
 <body>
 
-<header class="top">
-<img src="assets/logo.svg" class="logo"/>
+<header>
+  <div class="nav-buttons">
+    <a href="https://academy.ipharmegy.com">Academy</a>
+    <a href="https://inventory.ipharmegy.com">Inventory</a>
+    <a href="https://pos.ipharmegy.com">POS</a>
+    <a href="https://admin.ipharmegy.com">Admin</a>
+    <a href="https://cloud.ipharmegy.com">Cloud</a>
+  </div>
+
+  <img src="./assets/logo.svg" class="logo" alt="iPharmEGY">
 </header>
 
-<main class="center">
-<h1>Welcome to iPharmEGY</h1>
-<p>Unified pharmacy ecosystem portal</p>
-
-<div class="grid">
-<a href="https://admin.ipharmegy.com" class="card">Admin Portal</a>
-<a href="https://pos.ipharmegy.com" class="card">POS System</a>
-<a href="https://inventory.ipharmegy.com" class="card">Inventory</a>
-<a href="https://academy.ipharmegy.com" class="card">Academy</a>
-</div>
+<main>
+  Unified Access Portal
 </main>
 
-<footer>© iPharmEGY Platform</footer>
-
-<script src="js/app.js"></script>
 </body>
 </html>
