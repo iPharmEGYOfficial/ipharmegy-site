@@ -1,91 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>iPharmEGY Portal</title>
-
-<link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
-}
-
-body {
-  background: #f3f4f6;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-header {
-  background: white;
-  padding: 14px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.nav-buttons {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.nav-buttons a {
-  text-decoration: none;
-  background: #e5eaf4;
-  padding: 10px 18px;
-  border-radius: 12px;
-  font-size: 14px;
-  color: #1e3a8a;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.nav-buttons a:hover {
-  background: #1e40af;
-  color: white;
-}
-
-.logo {
-  height: 36px;
-}
-
-main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #6b7280;
-  font-size: 18px;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iPharmEGY</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+  <style>
+    :root {
+      --p:#19d3c5;
+      --p2:#0b7a73;
+      --bg1:#06121a;
+      --bg2:#081f2e;
+      --text:#eaf6ff;
+      --muted:rgba(234,246,255,.72);
+    }
+    *{box-sizing:border-box}
+    body {
+      margin:0; min-height:100vh; color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background:
+        radial-gradient(1100px 800px at 20% 18%, rgba(25,211,197,.18), transparent 60%),
+        radial-gradient(900px 700px at 86% 76%, rgba(11,122,115,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow:hidden;
+      display:grid; place-items:center;
+    }
+    .wrap{ width:min(1100px, 94vw); padding:48px 0; display:grid; gap:26px; justify-items:center; }
+    .top{ text-align:center; }
+    .brandMark{ width:86px; height:86px; border-radius:24px; background:rgba(234,246,255,.06);
+      border:1px solid rgba(234,246,255,.10); display:grid; place-items:center;
+      box-shadow:0 18px 50px rgba(0,0,0,.35);
+    }
+    .brandMark img{ width:56px; height:56px; }
+    h1{ margin:12px 0 6px; font-size: clamp(28px, 4vw, 46px); }
+    p{ margin:0; color:var(--muted); }
+    .grid{ display:grid; gap:14px; grid-template-columns: repeat(3, minmax(0, 1fr)); width:min(980px, 94vw); }
+    @media (max-width: 760px){ .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 420px){ .grid{ grid-template-columns: 1fr; } }
+    .orb{ text-decoration:none; color:inherit; border-radius: 999px; padding: 18px;
+      background: rgba(234,246,255,.05); border:1px solid rgba(234,246,255,.10);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      position:relative; overflow:hidden;
+    }
+    .orb::before{ content:""; position:absolute; inset:-40%;
+      background: radial-gradient(circle at 30% 30%, rgba(25,211,197,.18), transparent 55%);
+      transform: rotate(12deg);
+    }
+    .orbInner{ position:relative; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .orbLabel{ font-weight:800; letter-spacing:.2px; }
+    .orbCta{ font-size:13px; padding:7px 10px; border-radius:999px;
+      background: linear-gradient(135deg, rgba(25,211,197,.95), rgba(11,122,115,.85));
+      color:#042326; font-weight:800;
+    }
+    .orb:hover{ transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 18px 50px rgba(0,0,0,.32); border-color: rgba(25,211,197,.35);
+    }
+    .pulse{ position:absolute; width: 420px; height:420px; border-radius:50%;
+      border:1px solid rgba(25,211,197,.26); opacity:.45;
+      animation: glowPulse 2.8s ease-in-out infinite;
+      filter: blur(.2px);
+      pointer-events:none;
+    }
+    .pulse.p2{ width: 640px; height:640px; opacity:.22; animation-duration: 4.2s; }
+    @keyframes glowPulse{ 0%,100%{ transform: scale(1); opacity:.28; }
+      50%{ transform: scale(1.06); opacity:.58; } }
+    @media (prefers-reduced-motion: reduce){ .pulse{ animation:none !important; } .orb:hover{ transform:none !important; } }
+  </style>
 </head>
-
 <body>
+  <div class="pulse"></div>
+  <div class="pulse p2"></div>
 
-<header>
-  <div class="nav-buttons">
-    <a href="https://academy.ipharmegy.com">Academy</a>
-    <a href="https://inventory.ipharmegy.com">Inventory</a>
-    <a href="https://pos.ipharmegy.com">POS</a>
-    <a href="https://admin.ipharmegy.com">Admin</a>
-    <a href="https://cloud.ipharmegy.com">Cloud</a>
-  </div>
+  <main class="wrap">
+    <header class="top">
+      <div class="brandMark"><img src="assets/logo.svg" alt="iPharmEGY logo"></div>
+      <h1>iPharmEGY</h1>
+      <p>Choose an app to continue</p>
+    </header>
 
-  <img src="./assets/logo.svg" class="logo" alt="iPharmEGY">
-</header>
+    <section class="grid">
+      
+      <a class="orb" href="https://portal.ipharmegy.com" aria-label="Portal">
+        <span class="orbInner">
+          <span class="orbLabel">Portal</span>
+          <span class="orbCta">Open</span>
+        </span>
+      </a>
 
-<main>
-  Unified Access Portal
-</main>
+      <a class="orb" href="https://admin.ipharmegy.com" aria-label="Admin">
+        <span class="orbInner">
+          <span class="orbLabel">Admin</span>
+          <span class="orbCta">Open</span>
+        </span>
+      </a>
 
+      <a class="orb" href="https://inventory.ipharmegy.com" aria-label="Inventory">
+        <span class="orbInner">
+          <span class="orbLabel">Inventory</span>
+          <span class="orbCta">Open</span>
+        </span>
+      </a>
+
+      <a class="orb" href="https://pos.ipharmegy.com" aria-label="POS">
+        <span class="orbInner">
+          <span class="orbLabel">POS</span>
+          <span class="orbCta">Open</span>
+        </span>
+      </a>
+
+      <a class="orb" href="https://cloud.ipharmegy.com" aria-label="Cloud">
+        <span class="orbInner">
+          <span class="orbLabel">Cloud</span>
+          <span class="orbCta">Open</span>
+        </span>
+      </a>
+
+      <a class="orb" href="https://academy.ipharmegy.com" aria-label="Academy">
+        <span class="orbInner">
+          <span class="orbLabel">Academy</span>
+          <span class="orbCta">Open</span>
+        </span>
+      </a>
+    </section>
+  </main>
 </body>
 </html>
